@@ -5,7 +5,6 @@ import { useUser } from '@clerk/nextjs';
 import { desc, eq } from 'drizzle-orm';
 import React, { useEffect, useState } from 'react';
 import StoryItemCard from './StoryItemCard';
-import CustomLoader from '@/app/create-story/_components/CustomLoader';
 import Link from 'next/link';
 import { Button } from '@nextui-org/button';
 

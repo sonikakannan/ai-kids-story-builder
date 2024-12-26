@@ -8,11 +8,14 @@ import HTMLFlipBook from 'react-pageflip';
 import BookCoverPage from "../_components/BookCoverPage";
 import StoryPages from "../_components/StoryPages";
 import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
+import CustomLoader from '@/app/create-story/_components/CustomLoader';
 
 const ViewStory = ({ params: initialParams }) => {
   const [story, setStory] = useState(null);
   const bookRef = useRef();
   const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
+  
 
   const getStory = async (storyId) => {
     try {
