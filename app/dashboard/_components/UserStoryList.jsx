@@ -6,6 +6,8 @@ import { desc, eq } from 'drizzle-orm'
 import React, { useEffect, useState } from 'react'
 import StoryItemCard from './StoryItemCard'
 import CustomLoader from '@/app/create-story/_components/CustomLoader'
+import Link from 'next/link'
+import { Button } from '@nextui-org/button'
 
 const UserStoryList = () => {
     const {user} =useUser()
@@ -26,6 +28,11 @@ const UserStoryList = () => {
     }
   return (
     <div>
+       <div className='flex justify-end'>
+       <Link href={'/buy-credits'}>
+            <Button color='secondary' className='bg-blue-400 text-white text-lg mt-2 '>Buy More Credits</Button>
+            </Link>
+       </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-4'>
             {storyLsit&&storyLsit.map((item,index)=>(
                 <StoryItemCard key={index} story={item}/>
