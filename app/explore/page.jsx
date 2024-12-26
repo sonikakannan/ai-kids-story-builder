@@ -29,8 +29,8 @@ const ExploreMore = () => {
     }
 
     return (
-        <div className='min-h-screen p-10 md:px-20 lg:px-40'>
-            <h2 className='font-bold text-4xl text-primary text-center'>Explore More Stories</h2>
+        <div className='min-h-screen p-10 md:px-20 lg:px-40 w-full'>
+            <h2 className='font-bold text-3xl md:text-4xl text-primary text-center'>Explore More Stories</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 mt-10'>
                 {storyList.length > 0 ? ( // Check if storyList is not empty
                     storyList.map((item, index) => (
@@ -39,13 +39,12 @@ const ExploreMore = () => {
                 ) : (
                     <p>No stories available</p> // Display a fallback message
                 )}
-                
             </div>
             <div className='text-center mt-10'>
-                    <Button color='primary'
-                    onClick={()=>GetAllStories(offset+8)}
-                    >Load More</Button>
-                </div>
+                <Button color='primary' onClick={() => GetAllStories(offset + 8)}>
+                    Load More
+                </Button>
+            </div>
         </div>
     )
 }

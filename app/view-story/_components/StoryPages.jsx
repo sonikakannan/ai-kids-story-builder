@@ -10,7 +10,7 @@ const StoryPages = ({ storyChapter }) => {
   };
 
   return (
-    <div className='w-full h-full flex flex-col justify-between'>
+    <div className='w-full h-full flex flex-col gap-2'>
       <h2 className='flex flex-wrap justify-between  items-cente md:text-2xl font-bold text-primary'>
         {storyChapter?.title}
         <span className='text-3xl cursor-pointer' onClick={() => playSpeech(storyChapter?.story_text)}>
