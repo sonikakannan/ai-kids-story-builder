@@ -18,7 +18,7 @@ const StoryPages = ({ storyChapter }) => {
         </span>
       </h2>
       
-      <p className='md:text-xl p-10 mt-3 rounded-lg bg-slate-100 overflow-auto '>
+      <p className='md:text-xl p-10 mt-3 rounded-lg text-black bg-slate-100 overflow-auto '>
         {storyChapter?.story_text}
       </p>
     </div>

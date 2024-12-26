@@ -106,6 +106,8 @@ const ViewStory = ({ params: initialParams }) => {
           </div>
         )}
       </div>
+      {/* Show loader while loading */}
+      <CustomLoader isLoading={loading} />
     </div>
   );
 };
