@@ -21,6 +21,7 @@ const Header = () => {
         { name: 'Home', path: '/' },
         { name: 'Create Story', path: '/create-story' },
         { name: 'Explore Stories', path: '/explore' },
+        
     ];
 
     return (
@@ -58,7 +59,13 @@ const Header = () => {
                         <Link href={item.path} passHref>{item.name}</Link>
                     </NavbarMenuItem>
                 ))}
-
+                {isClient && (
+                    <NavbarMenuItem>
+                        <Link href={isSignedIn ? "/dashboard" : "/get-started"} passHref>
+                            {isSignedIn ? 'Dashboard' : 'Get Started'}
+                        </Link>
+                    </NavbarMenuItem>
+                )}
             </NavbarMenu>
         </Navbar>
     );
