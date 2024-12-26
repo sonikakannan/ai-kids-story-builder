@@ -10,9 +10,9 @@ import StoryPages from "../_components/StoryPages";
 import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const ViewStory = ({ params: initialParams }) => {
-  const [story, setStory] = useState(null); // Set default to null
+  const [story, setStory] = useState(null);
   const bookRef = useRef();
-  const [count, setCount] = useState(0); // Initial page count set to 0
+  const [count, setCount] = useState(0);
 
   const getStory = async (storyId) => {
     try {
@@ -21,21 +21,20 @@ const ViewStory = ({ params: initialParams }) => {
         .from(StoryData)
         .where(eq(StoryData.storyId, storyId));
       if (result.length > 0) {
-        setStory(result[0]); // Set story data if found
+        setStory(result[0]);
       } else {
-        setStory(null); // No story found, set to null
+        setStory(null);
       }
     } catch (error) {
       console.error("Error fetching story:", error);
-      setStory(null); // In case of error, set story to null
+      setStory(null);
     }
   };
 
   useEffect(() => {
     const fetchParams = async () => {
-      const resolvedParams = await initialParams; // Resolve params if they are a promise
+      const resolvedParams = await initialParams;
       if (resolvedParams?.id) {
-       
         getStory(resolvedParams.id);
       } else {
         console.error("Story ID not found in params.");
@@ -45,10 +44,7 @@ const ViewStory = ({ params: initialParams }) => {
     fetchParams();
   }, [initialParams]);
 
- 
-
   if (story === null) {
-    // Show "No story available" message if no story found
     return (
       <div className="flex justify-center items-center h-screen">
         <h2 className="font-bold text-2xl text-center text-red-600">No story available.</h2>
@@ -57,35 +53,33 @@ const ViewStory = ({ params: initialParams }) => {
   }
 
   return (
-    <div className="p-10 md:px-20 lg:px-40 flex flex-col min-h-screen py-5">
-      <h2 className="font-bold text-4xl text-center p-10 bg-primary text-white">
+    <div className="p-4 md:px-10 lg:px-20 flex flex-col min-h-screen py-5">
+      <h2 className="font-bold text-2xl md:text-4xl text-center p-5 bg-primary text-white">
         {story?.output?.title || "Loading..."}
       </h2>
-      <div className="relative">
+      <div className="relative flex ">
         <HTMLFlipBook
-          width={500}
-          height={500}
+          width={window.innerWidth < 768 ? 280 : 500} // Adjust width based on screen size
+          height={window.innerWidth < 768 ? 400 : 500} // Adjust height for smaller screens
           showCover={true}
           useMouseEvents={false}
-          className="mt-10 flex items-center justify-center"
           ref={bookRef}
+          className="lg:mt-5"
         >
-          <div className=" bg-white">
+          <div className="bg-white ">
             <BookCoverPage imageUrl={story?.coverImage} />
           </div>
-          {
-            [...Array(story?.output?.chapters?.length)].map((item, index) => (
-              <div key={index} className="bg-white p-10 border">
-                <StoryPages storyChapter={story?.output?.chapters[index]} />
-              </div>
-            ))
-          }
+          {[...Array(story?.output?.chapters?.length)].map((_, index) => (
+            <div key={index} className="bg-white p-5 border">
+              <StoryPages storyChapter={story?.output?.chapters[index]} />
+            </div>
+          ))}
         </HTMLFlipBook>
 
         {/* Previous page button */}
         {count > 0 && (
           <div
-            className="absolute -left-5 top-[250px]"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2"
             onClick={() => {
               if (bookRef.current) {
                 bookRef.current.pageFlip().flipPrev();
@@ -93,22 +87,22 @@ const ViewStory = ({ params: initialParams }) => {
               }
             }}
           >
-            <FaRegArrowAltCircleLeft className="text-[40px] text-primary cursor-pointer" />
+            <FaRegArrowAltCircleLeft className="text-[30px] md:text-[40px] text-primary cursor-pointer" />
           </div>
         )}
-        
+
         {/* Next page button */}
         {count < (story?.output?.chapters?.length - 1) && (
           <div
-            className="absolute -right-5 top-[250px]"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2"
             onClick={() => {
               if (bookRef.current) {
                 bookRef.current.pageFlip().flipNext();
-                setCount(count + 1); // Corrected the typo here
+                setCount(count + 1);
               }
             }}
           >
-            <FaRegArrowAltCircleRight className="text-[40px] text-primary cursor-pointer" />
+            <FaRegArrowAltCircleRight className="text-[30px] md:text-[40px] text-primary cursor-pointer" />
           </div>
         )}
       </div>

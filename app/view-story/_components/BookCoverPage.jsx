@@ -7,12 +7,12 @@ const BookCoverPage = ({ imageUrl }) => {
   
 
   return (
-    <div className='flex items-center justify-center'>
+    <div className=' w-full h-full'>
       <Image
         src={imageUrl || fallbackImageUrl}
         alt="coverImage"
-        width={500}
-        height={500}
+        layout='fill'
+        objectFit="cover" 
         priority // Ensures it loads faster
       />
     </div>

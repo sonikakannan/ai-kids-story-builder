@@ -10,15 +10,15 @@ const StoryPages = ({ storyChapter }) => {
   };
 
   return (
-    <div>
-      <h2 className='flex flex-wrap justify-between text-2xl font-bold text-primary'>
+    <div className='w-full h-full flex flex-col justify-between'>
+      <h2 className='flex flex-wrap justify-between  items-cente md:text-2xl font-bold text-primary'>
         {storyChapter?.title}
         <span className='text-3xl cursor-pointer' onClick={() => playSpeech(storyChapter?.story_text)}>
           <MdPlayCircleFilled />
         </span>
       </h2>
       
-      <p className='text-xl p-10 mt-3 rounded-lg bg-slate-100 text-wrap '>
+      <p className='md:text-xl p-10 mt-3 rounded-lg bg-slate-100 overflow-auto '>
         {storyChapter?.story_text}
       </p>
     </div>

@@ -21,7 +21,6 @@ const Header = () => {
         { name: 'Home', path: '/' },
         { name: 'Create Story', path: '/create-story' },
         { name: 'Explore Stories', path: '/explore' },
-        { name: 'Contact Us', path: '/contact-us' },
     ];
 
     return (
@@ -38,28 +37,35 @@ const Header = () => {
             </NavbarContent>
             <NavbarContent justify="center" className="hidden lg:flex">
                 {MenuList.map((item, index) => (
-                    <NavbarItem key={index} className="text-xl text-primary  font-medium hover:underline mx-2">
-                        <Link href={item.path} className=''>{item.name}</Link>
-                        
+                    <NavbarItem key={index} className="text-xl text-primary font-medium hover:underline mx-2">
+                        <Link href={item.path}>{item.name}</Link>
                     </NavbarItem>
                 ))}
             </NavbarContent>
             <NavbarContent justify="end" className="hidden lg:flex">
                 {isClient && (
                     <>
-                        <Link href="/dashboard">
+                        <Link href={isSignedIn ? "/dashboard" : "/get-started"}>
                             <Button color="primary">{isSignedIn ? 'Dashboard' : 'Get Started'}</Button>
                         </Link>
                         <UserButton />
                     </>
                 )}
             </NavbarContent>
-            <NavbarMenu>
+            <NavbarMenu className=''>
                 {MenuList.map((item, index) => (
-                    <NavbarMenuItem key={index}>
-                        <Link href={item.path}>{item.name}</Link>
+                    <NavbarMenuItem key={index} >
+                        <Link href={item.path} >{item.name}</Link>
                     </NavbarMenuItem>
                 ))}
+                {isClient && (
+                    <NavbarMenuItem>
+                        <Link href={isSignedIn ? "/dashboard" : "/get-started"}>
+                            <Button color="primary">{isSignedIn ? 'Dashboard' : 'Get Started'}</Button>
+                        </Link>
+                    </NavbarMenuItem>
+                )}
+                
             </NavbarMenu>
         </Navbar>
     );

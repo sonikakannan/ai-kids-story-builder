@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const StoryItemCard = ({ story }) => {
   return (
-    <Link href={`/view-story/`+story?.storyId}>
+    
       <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-5 hover:scale-105 transition-all cursor-pointer">
         <Image
           alt="Card example background"
@@ -15,12 +15,14 @@ const StoryItemCard = ({ story }) => {
           <div>
             <p className="text-black text-lg">{story?.output?.title || "Loading..."}</p>
           </div>
+          <Link href={`/view-story/`+story?.storyId}>
           <Button className="text-tiny" color="primary" radius="full" size="sm">
             Read Now
           </Button>
+          </Link>
         </CardFooter>
       </Card>
-    </Link>
+    
   );
 };
 
