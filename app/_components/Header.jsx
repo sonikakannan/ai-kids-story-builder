@@ -58,13 +58,7 @@ const Header = () => {
                         <Link href={item.path} passHref>{item.name}</Link>
                     </NavbarMenuItem>
                 ))}
-                {isClient && (
-                    <NavbarMenuItem>
-                        <Link href={isSignedIn ? "/dashboard" : "/get-started"} passHref>
-                            <Button color="primary">{isSignedIn ? 'Dashboard' : 'Get Started'}</Button>
-                        </Link>
-                    </NavbarMenuItem>
-                )}
+
             </NavbarMenu>
         </Navbar>
     );
