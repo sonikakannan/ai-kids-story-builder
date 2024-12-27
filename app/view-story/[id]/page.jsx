@@ -60,14 +60,14 @@ const ViewStory = ({ params: initialParams }) => {
       <h2 className="font-bold text-2xl md:text-4xl text-center p-5 bg-primary text-white">
         {story?.output?.title || "Loading..."}
       </h2>
-      <div className="relative flex ">
+      <div className="relative ">
         <HTMLFlipBook
           width={window.innerWidth < 768 ? 280 : 500} // Adjust width based on screen size
           height={window.innerWidth < 768 ? 400 : 500} // Adjust height for smaller screens
           showCover={true}
           useMouseEvents={false}
           ref={bookRef}
-          className="lg:mt-5"
+          className="lg:mt-5 top-0"
         >
           <div className="bg-white ">
             <BookCoverPage imageUrl={story?.coverImage} />

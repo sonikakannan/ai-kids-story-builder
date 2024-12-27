@@ -15,18 +15,18 @@ const Hero = () => {
                         Craft Magical Stories for kids in Minutes
                     </h2>
                     <p className='text-primary text-xl md:text-2xl'>Create fun and personalised stories that bring your child's adventures to life and spark their passion for reading.It only take a few seconds!</p>
-                    {/* {isSignedIn && (
-                        <Link href={isSignedIn ? "/dashboard" : "/get-started"}>
-                            <Button size='lg' color='primary'
-                                className='mt-5 font-bold text-2xl p-8 flex lg:hidden'
-                            >{isSignedIn ? 'Dashboard' : 'Get Started'}</Button>
-                            </Link>
-                    )} */}
-                     <Link href={"/create-story"}>
-                            <Button size='lg' color='primary'
-                                className='mt-5 font-bold text-2xl p-8 '
-                            >Create Story</Button>
-                            </Link>
+                    
+<Link href={"/create-story"} passHref>
+    <Button
+        as="a"
+        size="lg"
+        color="primary"
+        className="mt-5 font-bold text-2xl p-8"
+    >
+        Create Story
+    </Button>
+</Link>
+
                 </div>
                 <div className='flex items-center justify-center'>
                     <Image src={'/hero.png'} alt='hero' width={700} height={400} />
