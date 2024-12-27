@@ -1,6 +1,6 @@
 'use client'
+import { Button } from '@/components/ui/button'
 import { useUser } from '@clerk/nextjs'
-import { Button } from '@nextui-org/button'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -16,7 +16,7 @@ const Hero = () => {
                     </h2>
                     <p className='text-primary text-xl md:text-2xl'>Create fun and personalised stories that bring your child's adventures to life and spark their passion for reading.It only take a few seconds!</p>
                     
-<Link href={"/create-story"} passHref>
+<Link href={"/create-story"} >
     <Button
         as="a"
         size="lg"
