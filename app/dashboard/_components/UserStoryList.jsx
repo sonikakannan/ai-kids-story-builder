@@ -6,7 +6,8 @@ import { desc, eq } from 'drizzle-orm';
 import React, { useEffect, useState } from 'react';
 import StoryItemCard from './StoryItemCard';
 import Link from 'next/link';
-import { Button } from '@nextui-org/button';
+import { Button } from '@/components/ui/button';
+
 
 const UserStoryList = () => {
   const { user } = useUser();
