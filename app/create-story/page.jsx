@@ -128,10 +128,10 @@ const CreateStory = () => {
       </div>
       <div className='flex justify-end my-10 flex-col items-end'>
         <Button color='primary' className='p-10 text-2xl'
-         onPress={GenerateStory}
+         onClick={GenerateStory}
          disabled={loading}
          >Generate Story</Button>
-         <span>1 Credit will user</span>
+         <span>1 Credit will use</span>
       </div>
       <CustomLoader isLoading={loading}/>
 
